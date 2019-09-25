@@ -1,6 +1,19 @@
+import sys
 
 def list_mean(L):
-    return None
+    if L is None:
+        return None
+    if len(L) == 0:
+        return None
+    
+    s = 0
+    
+    for l in L:
+        try:
+            s += l
+        except TypeError:
+            return None
+    return s/len(L)
 
 def list_stdev(L):
     return None
