@@ -1,4 +1,5 @@
 import sys
+import math
 
 def list_mean(L):
     if L is None:
@@ -16,4 +17,10 @@ def list_mean(L):
     return s/len(L)
 
 def list_stdev(L):
-    return None
+    if L is None:
+        return None
+    if len(L) == 0:
+        return None
+    
+    std = math.sqrt(sum([(list_mean(L)-x)**2 for x in L]) / len(L))
+    return std

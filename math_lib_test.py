@@ -13,6 +13,10 @@ class TestMathLib(unittest.TestCase):
     def test_mean_constants(self):
         r = math_lib.list_mean([1,1,1,1])
         self.assertEqual(r,1)
+    
+    def test_stdev_constants(self):
+        r = math_lib.list_stdev([1,1,1,1])
+        self.assertEqual(r,0)
         
     def test_list_mean_rand_ints(self):
         L = []
@@ -39,11 +43,7 @@ class TestMathLib(unittest.TestCase):
         for i in range(10):
             L.append(random.randint(0,100))
         L.append('X')
-        
-#        with self.assertRaises(TypeError) as ex:
-#            math_lib.list_mean(L)
         r = math_lib.list_mean(L)
-            
         self.assertRaises(TypeError, r)
         
 if __name__ == '__main__':
