@@ -22,5 +22,11 @@ def list_stdev(L):
     if len(L) == 0:
         return None
     
-    std = math.sqrt(sum([(list_mean(L)-x)**2 for x in L]) / len(L))
-    return std
+    v = 0
+    
+    for l in L:
+        v += (list_mean(L) - l)**2
+
+    var = v/len(L)
+    stdev = math.sqrt(var)
+    return stdev
