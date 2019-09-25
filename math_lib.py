@@ -25,8 +25,10 @@ def list_stdev(L):
     v = 0
     
     for l in L:
-        v += (list_mean(L) - l)**2
-
+        try:
+            v += (list_mean(L) - l)**2
+        except TypeError:
+            return None
     var = v/len(L)
     stdev = math.sqrt(var)
     return stdev

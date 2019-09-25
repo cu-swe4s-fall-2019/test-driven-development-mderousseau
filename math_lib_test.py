@@ -53,6 +53,16 @@ class TestMathLib(unittest.TestCase):
             r = math_lib.list_mean(L)
             e = statistics.mean(L)
             self.assertTrue(math.isclose(r,e))
+            
+    def test_list_stdev_rand_floats(self):
+        L = []
+        for i in range(100):
+            for j in range(10):
+                L.append(
+                    random.uniform(0,100))
+            r = math_lib.list_mean(L)
+            e = statistics.mean(L)
+            self.assertTrue(math.isclose(r,e))
     
     def test_list_mean_non_int_in_list(self):
         L = []
@@ -60,6 +70,14 @@ class TestMathLib(unittest.TestCase):
             L.append(random.randint(0,100))
         L.append('X')
         r = math_lib.list_mean(L)
+        self.assertRaises(TypeError, r)
+        
+    def test_list_stdev_non_int_in_list(self):
+        L = []
+        for i in range(10):
+            L.append(random.randint(0,100))
+        L.append('X')
+        r = math_lib.list_stdev(L)
         self.assertRaises(TypeError, r)
         
 if __name__ == '__main__':
