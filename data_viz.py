@@ -1,9 +1,9 @@
 
 def boxplot(L, out_file_name):
-    pass
+    return None
 
 def histogram(L, out_file_name):
-    pass
+    return None
 
 def combo(L, out_file_name):
-    pass
+    return None
