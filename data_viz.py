@@ -1,3 +1,5 @@
+""" Several functions for plotting including
+    histogram, boxplot, and a combo plot."""
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -6,14 +8,19 @@ import os.path
 from os import path
 import math_lib
 
+
 def boxplot(L, out_file_name):
-    if path.exists(out_file_name) == True:
+    # check to see if the path already exists
+    if path.exists(out_file_name) is True:
         return None
     width = 3
     height = 3
     fig = plt.figure(figsize=(width, height), dpi=300)
+
+    # calc mean and stdev for titling the plot
     mean = round(math_lib.list_mean(L), 4)
     stdev = round(math_lib.list_stdev(L), 4)
+
     ax = fig.add_subplot(1, 1, 1)
     ax.set_ylabel('Value')
     ax.set_title('Mean: ' + str(mean) + ' Stdev: ' + str(stdev))
@@ -22,7 +29,7 @@ def boxplot(L, out_file_name):
 
 
 def histogram(L, out_file_name):
-    if path.exists(out_file_name) == True:
+    if path.exists(out_file_name) is True:
         return None
     width = 3
     height = 3
@@ -38,7 +45,7 @@ def histogram(L, out_file_name):
 
 
 def combo(L, out_file_name):
-    if path.exists(out_file_name) == True:
+    if path.exists(out_file_name) is True:
         return None
     mean = round(math_lib.list_mean(L), 4)
     stdev = round(math_lib.list_stdev(L), 4)
@@ -50,4 +57,3 @@ def combo(L, out_file_name):
     ax2.boxplot(L)
     ax2.set_ylabel('Value')
     plt.savefig(out_file_name, bbox_inches="tight")
-
