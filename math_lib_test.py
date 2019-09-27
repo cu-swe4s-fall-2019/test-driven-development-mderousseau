@@ -28,8 +28,7 @@ class TestMathLib(unittest.TestCase):
         L = []
         for i in range(100):
             for j in range(10):
-                L.append(
-                random.randint(0, 100))
+                L.append(random.randint(0, 100))
             r = math_lib.list_mean(L)
             e = statistics.mean(L)
             self.assertEqual(r, e)
@@ -40,11 +39,12 @@ class TestMathLib(unittest.TestCase):
         for i in range(100):
             for j in range(10):
                 L.append(
-                random.randint(0, 100))
+                    random.randint(0, 100))
             r = math_lib.list_stdev(L)
             e = numpy.std(L)
-            self.assertTrue(math.isclose(e, r, rel_tol=1e-03))
-
+        self.assertTrue(math.isclose(e, r, rel_tol=1e-03))
+    
+    #test mean with random floats
     def test_list_mean_rand_floats(self):
         L = []
         for i in range(100):
@@ -54,7 +54,8 @@ class TestMathLib(unittest.TestCase):
             r = math_lib.list_mean(L)
             e = statistics.mean(L)
             self.assertTrue(math.isclose(r, e))
-
+    
+    # test stdev with random floats
     def test_list_stdev_rand_floats(self):
         L = []
         for i in range(100):
@@ -65,6 +66,7 @@ class TestMathLib(unittest.TestCase):
             e = statistics.mean(L)
             self.assertTrue(math.isclose(r, e))
 
+    # test for error handling with non integers
     def test_list_mean_non_int_in_list(self):
         L = []
         for i in range(10):
@@ -73,6 +75,7 @@ class TestMathLib(unittest.TestCase):
         r = math_lib.list_mean(L)
         self.assertRaises(TypeError, r)
 
+    # test stdev for nonintegers
     def test_list_stdev_non_int_in_list(self):
         L = []
         for i in range(10):
