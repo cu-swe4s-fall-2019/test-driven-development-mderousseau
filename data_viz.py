@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import sys
 import os.path
 from os import path
+import math_lib
 
 def boxplot(L, out_file_name):
     if path.exists(out_file_name) == True:
@@ -11,7 +12,11 @@ def boxplot(L, out_file_name):
     width = 3
     height = 3
     fig = plt.figure(figsize=(width, height), dpi=300)
+    mean = round(math_lib.list_mean(L), 4)
+    stdev = round(math_lib.list_stdev(L), 4)
     ax = fig.add_subplot(1, 1, 1)
+    ax.set_ylabel('Value')
+    ax.set_title('Mean: ' + str(mean) + ' Stdev: ' + str(stdev))
     ax.boxplot(L)
     plt.savefig(out_file_name, bbox_inches="tight")
 
@@ -21,18 +26,29 @@ def histogram(L, out_file_name):
         return None
     width = 3
     height = 3
+    mean = round(math_lib.list_mean(L), 4)
+    stdev = round(math_lib.list_stdev(L), 4)
     fig = plt.figure(figsize=(width, height), dpi=300)
     ax = fig.add_subplot(1, 1, 1)
     ax.hist(L)
+    ax.set_ylabel('Frequency')
+    ax.set_xlabel('Value')
+    ax.set_title('Mean: ' + str(mean) + ' Stdev: ' + str(stdev))
     plt.savefig(out_file_name, bbox_inches="tight")
+
 
 def combo(L, out_file_name):
     if path.exists(out_file_name) == True:
         return None
+    mean = round(math_lib.list_mean(L), 4)
+    stdev = round(math_lib.list_stdev(L), 4)
     fig, (ax1, ax2) = plt.subplots(1, 2)
-    fig.suptitle("Mean, Std")
+    fig.suptitle('Mean: ' + str(mean) + ' Stdev: ' + str(stdev))
     ax1.hist(L)
+    ax1.set_ylabel('Frequency')
+    ax1.set_xlabel('Value')
     ax2.boxplot(L)
+    ax2.set_ylabel('Value')
     plt.savefig(out_file_name, bbox_inches="tight")
 
-combo([1,2,3,4], 'out_file.png')
+combo([1,2,3,3,3,4], 'outfile.png')
