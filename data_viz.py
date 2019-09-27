@@ -51,4 +51,3 @@ def combo(L, out_file_name):
     ax2.set_ylabel('Value')
     plt.savefig(out_file_name, bbox_inches="tight")
 
-combo([1,2,3,3,3,4], 'outfile.png')
